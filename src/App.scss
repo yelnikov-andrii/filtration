@@ -1,0 +1,30 @@
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__block {
+    width: 650px;
+  }
+
+  &__form {
+    display: block;
+    justify-self: flex-start;
+    margin: 0 0 10px 0;
+
+    &-label {
+      margin-right: 5px;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &-item {
+      margin-bottom: 5px;
+    }
+  }
+
+}
