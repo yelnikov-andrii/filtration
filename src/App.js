@@ -18,6 +18,7 @@ function App() {
     };
 
     fetchData();
+    console.log(data);
   }, []);
 
 const filterData = (input) => {
@@ -49,7 +50,7 @@ const filteredData = filterData(query);
         > {`${el['@path']}/`}
         <Link 
           className='main__link'
-          to={`/${el['@path']}`}
+          to={`${el['@path']}`}
         >
           {`${el.title}`}
         </Link>
