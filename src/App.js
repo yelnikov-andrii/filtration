@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getData } from './api';
-import './App.css';
+import './App.scss';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [data, setData] = useState();
@@ -46,12 +47,12 @@ const filteredData = filterData(query);
           className='main__list-item'
           key={el['@id']}
         > {`${el['@path']}/`}
-        <a 
+        <Link 
           className='main__link'
-          href={`/${el.title}`}
+          to={`/${el['@path']}`}
         >
           {`${el.title}`}
-        </a>
+        </Link>
         </li>
       ))}
       </ul>
