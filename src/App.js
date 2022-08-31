@@ -40,7 +40,7 @@ const filteredData = filterData(query);
       {filteredData !== undefined && filteredData.map(el => (
         <li
           key={el['@id']}>
-            {`${el['@path']}/`}<a href={`${el['@path']}/`}>
+            {`${el['@path']}/`}<a href={`${el.title}/`}>
           {`${el.title}`}</a>
         </li>
       ))}
