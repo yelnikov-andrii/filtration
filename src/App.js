@@ -11,7 +11,7 @@ function App() {
     async function fetchData() {
         try {
             const res = await getData(); 
-            setData(res.results);
+            setData(res.results.sort((firstObj, secondObj) => firstObj['@path'].localeCompare(secondObj['@path'])));
         } catch (err) {
             console.log(err);
         }
@@ -22,14 +22,8 @@ function App() {
 
 const filterData = (input) => {
   if (data !== undefined && data.length !== 0) {
-    const filtered = [...data].filter((obj) =>
-     obj.title !== undefined);
-     
-     const filteredByTitleAndPath = 
-     filtered.filter((obj) => obj.title.toLowerCase().includes(input.toLowerCase()) ||
-      obj['@path'].toLowerCase().includes(input.toLowerCase()));
-
-    return filteredByTitleAndPath;
+    const filtered = [...data].filter((obj) => obj.title && obj.title.toLowerCase().includes(input.toLowerCase()));
+    return filtered;
   }
 }
 
