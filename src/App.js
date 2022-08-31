@@ -15,13 +15,11 @@ function App() {
         }
     }
     fetchData();
-    console.log(data)
 }, []);
 
 const filterData = (input) => {
   if (data !== undefined && data.length !== 0) {
     const filtered = [...data].filter((el) => el.title !== undefined && el.title.toLowerCase().includes(input.toLowerCase()));
-    console.log(data)
     return filtered;
   }
 }
@@ -40,7 +38,7 @@ const filteredData = filterData(query);
       {filteredData !== undefined && filteredData.map(el => (
         <li
           key={el['@id']}>
-            {`${el['@path']}/`}<a href={`${el.title}/`}>
+            {`${el['@path']}/`}<a href={`/${el.title}`}>
           {`${el.title}`}</a>
         </li>
       ))}
