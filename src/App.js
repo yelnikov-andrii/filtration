@@ -46,7 +46,7 @@ const filteredData = filterData(query);
         <li
           className='main__list-item'
           key={el['@id']}
-        > {`${el['@path'].slice(1)}/ `}
+        > {`${el['@path'].slice(1).replaceAll('/', ' / ')}/ `}
         <Link 
           className='main__link'
           to={`${el.title}`}
