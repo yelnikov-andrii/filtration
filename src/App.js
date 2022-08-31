@@ -15,6 +15,7 @@ function App() {
         }
     }
     fetchData();
+    console.log(data)
 }, []);
 
 const filterData = (input) => {
@@ -40,7 +41,7 @@ const filteredData = filterData(query);
         <li
           key={el['@id']}>
           <a href={el.title || '/'}>
-          {`${el.title || '-'}`}
+          {`${el['@path']}/${el.title || '-'}`}
           </a>
         </li>
       ))}
