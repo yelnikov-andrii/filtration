@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function App() {
   const [data, setData] = useState();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(' ');
 
   useEffect( () => { 
     async function fetchData() {
@@ -22,8 +22,14 @@ function App() {
 
 const filterData = (input) => {
   if (data !== undefined && data.length !== 0) {
-    const filtered = [...data].filter((obj) => obj.title !== undefined && obj.title.toLowerCase().includes(input.toLowerCase()));
-    return filtered;
+    const filtered = [...data].filter((obj) =>
+     obj.title !== undefined);
+     
+     const filteredByTitleAndPath = 
+     filtered.filter((obj) => obj.title.toLowerCase().includes(input.toLowerCase()) ||
+      obj['@path'].toLowerCase().includes(input.toLowerCase()));
+
+    return filteredByTitleAndPath;
   }
 }
 
