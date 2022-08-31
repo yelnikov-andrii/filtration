@@ -1,9 +1,30 @@
-.App {
+.main {
   display: flex;
-  justify-content: center;
-  
+  align-items: center;
+  flex-direction: column;
+
 }
 
-ul {
+.main__block {
+  width: 650px;
+}
+
+.main__form {
+  display: block;
+  justify-self: flex-start;
+  margin: 0 0 10px 0;
+}
+
+.main__form-label {
+  margin-right: 5px;
+}
+
+.main__list {
+  margin: 0;
+  padding: 0;
   list-style: none;
+}
+
+.main__list-item {
+  margin-bottom: 5px;
 }
