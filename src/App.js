@@ -1,33 +1,34 @@
-import { useEffect, useState } from 'react';
-import { getData } from './api';
-import './App.scss';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { getData } from './api'
+import './App.scss'
+import { Link } from 'react-router-dom'
 
-function App() {
-  const [data, setData] = useState();
-  const [query, setQuery] = useState(' ');
+function App () {
+  const [data, setData] = useState()
+  const [query, setQuery] = useState(' ')
 
-  useEffect( () => { 
-    async function fetchData() {
-        try {
-            const res = await getData(); 
-            setData(res.results.sort((firstObj, secondObj) => firstObj['@path'].localeCompare(secondObj['@path'])));
-        } catch (err) {
-            console.log(err);
-        }
+  useEffect(() => {
+    async function fetchData () {
+      try {
+        const res = await getData()
+        setData(res.results.sort((firstObj, secondObj) => firstObj['@path'].localeCompare(secondObj['@path'])))
+      } catch (err) {
+        console.log(err)
+      }
     };
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
-const filterData = (input) => {
-  if (data !== undefined && data.length !== 0) {
-    const filtered = [...data].filter((obj) => obj.title && obj.title.toLowerCase().includes(input.toLowerCase()));
-    return filtered;
+  const filterData = (input) => {
+    if (data !== undefined && data.length !== 0) {
+      const filtered = [...data].filter((obj) => obj.title && obj.title.toLowerCase().includes(input.toLowerCase()))
+      return filtered
+    }
   }
-}
 
-const filteredData = filterData(query);
+  const filteredData = filterData(query)
+
   return (
     <div className="main">
       <div className='main__block'>
@@ -37,8 +38,8 @@ const filteredData = filterData(query);
           className='main__form-input'
           placeholder='title'
           onChange={(event) => {
-            setQuery(event.target.value);
-            filterData(query);
+            setQuery(event.target.value)
+            filterData(query)
           }}/>
       </form>
       <ul className='main__list'>
@@ -47,7 +48,7 @@ const filteredData = filterData(query);
           className='main__list-item'
           key={el['@id']}
         > {`${el['@path'].slice(1).replaceAll('/', ' / ')}/ `}
-        <Link 
+        <Link
           className='main__link'
           to={`${el.title}`}
         >
@@ -58,7 +59,7 @@ const filteredData = filterData(query);
       </ul>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
